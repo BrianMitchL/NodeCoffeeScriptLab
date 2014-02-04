@@ -13,6 +13,22 @@ loop1 = (x) ->
     temp += i.toString()
   temp
 
+outsideOfRange = (num, min, max) ->
+  if num < min or num > max
+    true
+  else
+    false
+
+wordSlice = (word) ->
+  arr = []
+  arr = word.split " "
+  arr
+
+wordSplice = (words) ->
+  temp = ""
+  for i in words
+    temp += words[i]
+  temp
 #tests
 assert = require 'assert'
 class Person
@@ -21,8 +37,6 @@ class Person
 
 tim = new Person name: tim, age: 7, height: 22, DOB: "1/1/1912"
 bob = new Person name: bob, age: 8, height: 124, DOB: "7/24/2895"
-
-class Employee extends Person
 
 
 describe "testing loops", ->
@@ -33,18 +47,18 @@ describe "testing loops", ->
   it "should return 12345", ->
     assert.equal(loop1(5), "12345")
 
-#describe "Ranges, slicing, and splicing", ->
-#  it "should return false", ->
-#    assert.equal(outsideOfRange(4, 5, 9), false)
-#  it "should return true", ->
-#    assert.equal(outsideOfRange(2, -3, 6), true)
-#  it "should return [this,is,a,test]", ->
-#    assert.deepEqual(wordSlice("this is a test"), ["this","is","a","test"])
-#  it "should return this is a test", ->
-#    assert.eual(wordSplice(["this","is","a","test"]), "this is a test")
-#  it "should return true", ->
-#    assert.equal(inRangeOfAlphabet("f"), true)
-#
+describe "Ranges, slicing, and splicing", ->
+  it "should return true", ->
+    assert.equal(outsideOfRange(4, 5, 9), true)
+  it "should return false", ->
+    assert.equal(outsideOfRange(2, -3, 6), false)
+  it "should return [this,is,a,test]", ->
+    assert.deepEqual(wordSlice("this is a test"), ["this","is","a","test"])
+  it "should return thisisatest", ->
+    assert.eual(wordSplice(["this","is","a","test"]), "thisisatest")
+  it "should return true", ->
+    assert.equal(inRangeOfAlphabet("f"), true)
+
 #describe "testing operators", ->
 #  it "should return true", ->
 #    assert.equal(isNo(false), true)
@@ -76,10 +90,4 @@ describe "testing loops", ->
 #    assert.equal(sum(5, 6, 3, 4, 2, 4, 5, 2, 5, 6, 9, 7, 8), 61)
 #  it "should count the number of operands: 4", ->
 #    assert.equal(countOperands(1, 2, "fish", [1, 2, 3]), 4)
-#
-#describe "Testing Object-Oriented features", ->
-#
-#
-#
-#  it "should return true", ->
-#  assert.equal(sum(1, 2, 3, 4), 10)
+
