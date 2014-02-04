@@ -26,9 +26,16 @@ wordSlice = (word) ->
 
 wordSplice = (words) ->
   temp = ""
-  for i in words
+  for i in [0..words.length - 1]
     temp += words[i]
   temp
+
+inExclusiveRange = (x) ->
+  for i in [34...67]
+    if x == i
+      return true
+  false
+
 #tests
 assert = require 'assert'
 class Person
@@ -55,9 +62,9 @@ describe "Ranges, slicing, and splicing", ->
   it "should return [this,is,a,test]", ->
     assert.deepEqual(wordSlice("this is a test"), ["this","is","a","test"])
   it "should return thisisatest", ->
-    assert.eual(wordSplice(["this","is","a","test"]), "thisisatest")
+    assert.equal(wordSplice(["this","is","a","test"]), "thisisatest")
   it "should return true", ->
-    assert.equal(inRangeOfAlphabet("f"), true)
+    assert.equal(inExclusiveRange(54), true)
 
 #describe "testing operators", ->
 #  it "should return true", ->
