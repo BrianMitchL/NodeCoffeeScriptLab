@@ -61,6 +61,14 @@ changeToTwo = (input) ->
   input = 2
   input
 
+sum = (first, rest...) ->
+  toReturn = first
+  for i in [0..rest.length - 1]
+    toReturn += rest[i]
+  toReturn
+
+countOperands = (operands...) ->
+  operands.length
 #
 #
 #tests
@@ -112,10 +120,10 @@ describe "testing destructuring", ->
   it "should return 2", ->
     assert.equal(changeToTwo(cheese), 2)
 
-#describe "Testing splats", ->
-#  it "should sum the operands: 10", ->
-#    assert.equal(sum(1, 2, 3, 4), 10)
-#  it "should sum the operands: 61", ->
-#    assert.equal(sum(5, 6, 3, 4, 2, 4, 5, 2, 5, 6, 9, 7, 8), 61)
-#  it "should count the number of operands: 4", ->
-#    assert.equal(countOperands(1, 2, "fish", [1, 2, 3]), 4)
+describe "Testing splats", ->
+  it "should sum the operands: 10", ->
+    assert.equal(sum(1, 2, 3, 4), 10)
+  it "should sum the operands: 66", ->
+    assert.equal(sum(5, 6, 3, 4, 2, 4, 5, 2, 5, 6, 9, 7, 8), 66)
+  it "should count the number of operands: 4", ->
+    assert.equal(countOperands(1, 2, "fish", [1, 2, 3]), 4)
