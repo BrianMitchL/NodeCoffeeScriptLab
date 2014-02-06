@@ -36,7 +36,24 @@ inExclusiveRange = (x) ->
       return true
   false
 
+isNo = (x) ->
+  if x == no
+    return yes
+  return off
+
+squareThis = (x) ->
+  ## ** should work for Math.pow() if WebStorm was up to date with coffeescript 1.7.x
+  return Math.pow(x, 2)
+
+testvar = "this is a test"
+testing = null
+cheese = 564
+
+exists = (word) ->
+  word?
+
 #tests
+
 assert = require 'assert'
 class Person
   constructor: (options) ->
@@ -66,21 +83,21 @@ describe "Ranges, slicing, and splicing", ->
   it "should return true", ->
     assert.equal(inExclusiveRange(54), true)
 
-#describe "testing operators", ->
-#  it "should return true", ->
-#    assert.equal(isNo(false), true)
-#  it "should return no", ->
-#    assert.equal(isNo(yes), no)
-#  it "should return 81", ->
-#    assert.eual(pow(9), 81)
-#
-#describe "testing existential operator", ->
-#  it "should return false", ->
-#    assert.equal(exists("undefined"), false)
-#  it "should return true", ->
-#    assert.equal(exists("testvar"), true)
-#  it "should return false", ->
-#    assert.equal(exists("no"), false)
+describe "testing operators", ->
+  it "should return true", ->
+    assert.equal(isNo(false), true)
+  it "should return no", ->
+    assert.equal(isNo(yes), no)
+  it "should return 81", ->
+    assert.equal(squareThis(9), 81)
+
+describe "testing existential operator", ->
+  it "should return false", ->
+    assert.equal(exists(testing), false)
+  it "should return true", ->
+    assert.equal(exists(testvar), true)
+  it "should return false", ->
+    assert.equal(exists(cheese), true)
 #
 #describe "testing destructuring", ->
 #  it "should return [1, 2, 'three', 4]", ->
@@ -97,4 +114,3 @@ describe "Ranges, slicing, and splicing", ->
 #    assert.equal(sum(5, 6, 3, 4, 2, 4, 5, 2, 5, 6, 9, 7, 8), 61)
 #  it "should count the number of operands: 4", ->
 #    assert.equal(countOperands(1, 2, "fish", [1, 2, 3]), 4)
-
