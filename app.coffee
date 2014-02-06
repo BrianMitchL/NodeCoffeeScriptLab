@@ -6,6 +6,7 @@ express = require("express")
 routes = require("./routes")
 user = require("./routes/user")
 form = require('./routes/form')
+gpa = require("./routes/gpa")
 http = require("http")
 path = require("path")
 app = express()
@@ -27,7 +28,9 @@ app.use express.static(path.join(__dirname, "public"))
 app.use express.errorHandler()  if "development" is app.get("env")
 app.get "/", routes.index
 app.get "/users", user.list
-app.get "/form", form.formResponse # added by Elena for testing
-app.post "/form", form.postResponse # also added for testing
+app.get "/form", form.formResponse
+app.post "/form", form.postResponse
+app.get "/gpa", form.formResponse
+app.post "/gpa", form.postResponse
 http.createServer(app).listen app.get("port"), ->
     console.log "Express server listening on port " + app.get("port")
