@@ -52,16 +52,21 @@ cheese = 564
 exists = (word) ->
   word?
 
+swap = (arr, arr2) ->
+  arr = arr2
+  arr
+
+
+changeToTwo = (input) ->
+  input = 2
+  input
+
+#
+#
 #tests
-
+#
+#
 assert = require 'assert'
-class Person
-  constructor: (options) ->
-    {@name, @age, @height, @DOB} = options
-
-tim = new Person name: tim, age: 7, height: 22, DOB: "1/1/1912"
-bob = new Person name: bob, age: 8, height: 124, DOB: "7/24/2895"
-
 
 describe "testing loops", ->
   it "should return 14", ->
@@ -98,15 +103,15 @@ describe "testing existential operator", ->
     assert.equal(exists(testvar), true)
   it "should return false", ->
     assert.equal(exists(cheese), true)
-#
-#describe "testing destructuring", ->
-#  it "should return [1, 2, 'three', 4]", ->
-#    assert.deepEqual(swap([a, b, c, d],[1, 2, "three", 4]), [1, 2, "three", 4])
-#  it "should return tim", ->
-#    assert.deepEqual(personSwap(personSwap(tim, bob), tim), tim)
-#  it "should return 2", ->
-#    assert.equal(changeToTwo(x), 2)
-#
+
+describe "testing destructuring", ->
+  it "should return [1, 2, 'three', 4]", ->
+    assert.deepEqual(swap([testvar, testing, cheese],[1, 2, "three"]), [1, 2, "three"])
+  it "should return [null, 'cool beans', 50670]", ->
+    assert.deepEqual(swap([cheese, testing, testvar],[null, "cool beans", 50670]), [null, "cool beans", 50670])
+  it "should return 2", ->
+    assert.equal(changeToTwo(cheese), 2)
+
 #describe "Testing splats", ->
 #  it "should sum the operands: 10", ->
 #    assert.equal(sum(1, 2, 3, 4), 10)
