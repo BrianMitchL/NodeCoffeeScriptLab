@@ -3,7 +3,7 @@
 #functions
 charCount = (x) ->
   temp = 0
-  for x
+  for [0..x.length - 1]
     temp++
   temp
 

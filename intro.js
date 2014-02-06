@@ -4,10 +4,9 @@
     __slice = [].slice;
 
   charCount = function(x) {
-    var i, temp, _i, _len;
+    var temp, _i, _ref;
     temp = 0;
-    for (_i = 0, _len = x.length; _i < _len; _i++) {
-      i = x[_i];
+    for (_i = 0, _ref = x.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--) {
       temp++;
     }
     return temp;
