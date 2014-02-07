@@ -6,7 +6,7 @@
 <body>
 <form method="post" action="/gpa">
     <label>Class 1</label>
-    <select>
+    <select id="c1g">
         <option value=4.0>A</option>
         <option value=3.7>A-</option>
         <option value=3.3>B+</option>
@@ -20,7 +20,7 @@
         <option value=0.7>D-</option>
         <option value=0.0>F</option>
     </select>
-    <select>
+    <select id="c1c">
         <option value=5>5 Credits</option>
         <option value=4>4 Credits</option>
         <option value=3>3 Credits</option>
@@ -29,7 +29,7 @@
     </select>
     <br/>
     <label>Class 2</label>
-    <select>
+    <select id="c2g">
         <option value=4.0>A</option>
         <option value=3.7>A-</option>
         <option value=3.3>B+</option>
@@ -43,7 +43,7 @@
         <option value=0.7>D-</option>
         <option value=0.0>F</option>
     </select>
-    <select>
+    <select id="c2c">
         <option value=5>5 Credits</option>
         <option value=4>4 Credits</option>
         <option value=3>3 Credits</option>
@@ -52,7 +52,7 @@
     </select>
     <br/>
     <label>Class 3</label>
-    <select>
+    <select id="c3g">
         <option value=4.0>A</option>
         <option value=3.7>A-</option>
         <option value=3.3>B+</option>
@@ -66,7 +66,7 @@
         <option value=0.7>D-</option>
         <option value=0.0>F</option>
     </select>
-    <select>
+    <select id="c3c">
         <option value=5>5 Credits</option>
         <option value=4>4 Credits</option>
         <option value=3>3 Credits</option>
@@ -75,7 +75,7 @@
     </select>
     <br/>
     <label>Class 4</label>
-    <select>
+    <select id="c4g">
         <option value=4.0>A</option>
         <option value=3.7>A-</option>
         <option value=3.3>B+</option>
@@ -89,13 +89,15 @@
         <option value=0.7>D-</option>
         <option value=0.0>F</option>
     </select>
-    <select>
+    <select id="c4c">
         <option value=5>5 Credits</option>
         <option value=4>4 Credits</option>
         <option value=3>3 Credits</option>
         <option value=2>2 Credits</option>
         <option value=1>1 Credits</option>
     </select>
+    <br />
+    <input type="submit" id ="submit" value="Submit" />
 </form>
 </body>
 </html>

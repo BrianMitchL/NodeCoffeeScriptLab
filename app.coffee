@@ -30,7 +30,7 @@ app.get "/", routes.index
 app.get "/users", user.list
 app.get "/form", form.formResponse
 app.post "/form", form.postResponse
-app.get "/gpa", form.formResponse
-app.post "/gpa", form.postResponse
+app.get "/gpa", gpa.gpaFormResponse
+app.post "/gpa", gpa.gpaPostResponse
 http.createServer(app).listen app.get("port"), ->
     console.log "Express server listening on port " + app.get("port")

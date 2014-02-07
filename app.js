@@ -57,9 +57,9 @@ Module dependencies.
 
   app.post("/form", form.postResponse);
 
-  app.get("/gpa", form.formResponse);
+  app.get("/gpa", gpa.gpaFormResponse);
 
-  app.post("/gpa", form.postResponse);
+  app.post("/gpa", gpa.gpaPostResponse);
 
   http.createServer(app).listen(app.get("port"), function() {
     return console.log("Express server listening on port " + app.get("port"));

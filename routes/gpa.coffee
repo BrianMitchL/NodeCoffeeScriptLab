@@ -90,6 +90,8 @@ gpaFormString = '<form method="post" action="/gpa">\n
         <option value=2>2 Credits</option>\n
         <option value=1>1 Credits</option>\n
     </select>\n
+     <br />\n
+    <input type="submit" id ="submit" value="Submit" />\n
 </form>\n'
 
 headerStr = '<!DOCTYPE html>\n
@@ -101,17 +103,8 @@ headerStr = '<!DOCTYPE html>\n
 
 footerStr = '</body>\n</html>'
 
-getCredits (credits...) ->
-  credits
-
-getGrades (grades...) ->
-  grades
-
-makeGPA (grades, credits) ->
-
-
-exports.formResponse = (req, res) ->
+exports.gpaFormResponse = (req, res) ->
   res.render 'gpa'
 
-exports.postResponse = (req, res) ->
-  res.send headerStr + formString + '<p>Your GPA is: ' + req.body.text + '</p>' + footerStr
+exports.gpaPostResponse = (req, res) ->
+  res.send headerStr + gpaFormString + '<p>Your GPA is: ' + req.body.c1g + '</p>' + footerStr
