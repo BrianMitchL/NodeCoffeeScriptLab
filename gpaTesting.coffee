@@ -12,4 +12,4 @@ describe "testing gpa calculator", ->
 
 describe "testing arrayizer and makeGPA together", ->
   it "should return 3.327", ->
-    assert.equal(makeGPA(arrayizer(3.3, 4.0, 2.7, 3.0), arrayizer(5, 4, 2, 4), 3.327)
+    assert.equal(makeGPA(arrayizer(3.3, 4.0, 2.7, 3.0), arrayizer(5, 4, 2, 4)), 3.327)
