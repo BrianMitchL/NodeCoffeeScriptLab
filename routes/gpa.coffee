@@ -1,6 +1,6 @@
 gpaFormString = '<form method="post" action="/gpa">\n
-    <label>Class 1</label>\n
-    <select id="c1g">\n
+    <label>Class 1:</label>\n
+    <select id="c1g" name="c1g">\n
         <option value=4.0>A</option>\n
         <option value=3.7>A-</option>\n
         <option value=3.3>B+</option>\n
@@ -14,7 +14,7 @@ gpaFormString = '<form method="post" action="/gpa">\n
         <option value=0.7>D-</option>\n
         <option value=0.0>F</option>\n
     </select>\n
-    <select id="c1c">\n
+    <select id="c1c" name="c1c">\n
         <option value=5>5 Credits</option>\n
         <option value=4>4 Credits</option>\n
         <option value=3>3 Credits</option>\n
@@ -22,8 +22,8 @@ gpaFormString = '<form method="post" action="/gpa">\n
         <option value=1>1 Credits</option>\n
     </select>\n
     <br/>\n
-    <label>Class 2</label>\n
-    <select id="c2g">\n
+    <label>Class 2:</label>\n
+    <select id="c2g" name="c2g">\n
         <option value=4.0>A</option>\n
         <option value=3.7>A-</option>\n
         <option value=3.3>B+</option>\n
@@ -37,7 +37,7 @@ gpaFormString = '<form method="post" action="/gpa">\n
         <option value=0.7>D-</option>\n
         <option value=0.0>F</option>\n
     </select>\n
-    <select id="c2c">\n
+    <select id="c2c" name="c2c">\n
         <option value=5>5 Credits</option>\n
         <option value=4>4 Credits</option>\n
         <option value=3>3 Credits</option>\n
@@ -45,8 +45,8 @@ gpaFormString = '<form method="post" action="/gpa">\n
         <option value=1>1 Credits</option>\n
     </select>\n
     <br/>\n
-    <label>Class 3</label>\n
-    <select id="c3g">\n
+    <label>Class 3:</label>\n
+    <select id="c3g" name="c3g">\n
         <option value=4.0>A</option>\n
         <option value=3.7>A-</option>\n
         <option value=3.3>B+</option>\n
@@ -60,7 +60,7 @@ gpaFormString = '<form method="post" action="/gpa">\n
         <option value=0.7>D-</option>\n
         <option value=0.0>F</option>\n
     </select>\n
-    <select id="c3c">\n
+    <select id="c3c" name="c3c">\n
         <option value=5>5 Credits</option>\n
         <option value=4>4 Credits</option>\n
         <option value=3>3 Credits</option>\n
@@ -68,8 +68,8 @@ gpaFormString = '<form method="post" action="/gpa">\n
         <option value=1>1 Credits</option>\n
     </select>\n
     <br/>\n
-    <label>Class 4</label>\n
-    <select id="c4g">\n
+    <label>Class 4:</label>\n
+    <select id="c4g" name="c4g">\n
         <option value=4.0>A</option>\n
         <option value=3.7>A-</option>\n
         <option value=3.3>B+</option>\n
@@ -83,7 +83,7 @@ gpaFormString = '<form method="post" action="/gpa">\n
         <option value=0.7>D-</option>\n
         <option value=0.0>F</option>\n
     </select>\n
-    <select id="c4c">\n
+    <select id="c4c" name="c4c">\n
         <option value=5>5 Credits</option>\n
         <option value=4>4 Credits</option>\n
         <option value=3>3 Credits</option>\n
@@ -107,9 +107,6 @@ arrayizer = (inputs...) ->
   inputs
 
 makeGPA = (grades, credits) ->
-  if grades.length != credits.length
-    alert "You must fill in all fields"
-    null
   gradePoint = 0
   for i in [0..grades.length - 1]
     gradePoint += (grades[i] * credits[i])
@@ -122,7 +119,9 @@ exports.gpaFormResponse = (req, res) ->
   res.render 'gpa'
 
 exports.gpaPostResponse = (req, res) ->
-  res.send headerStr + gpaFormString + '<p>Your GPA is: ' + req.body.makeGPA(arrayizer(c1g, c2g, c3g, c4g), arrayizer(c1c, c2c, c3c, c4c)) + '</p>' + footerStr
+  console.log(arrayizer(req.body.c1g, req.body.c2g, req.body.c3g, req.body.c4g))
+  console.log(arrayizer(req.body.c1c, req.body.c2c, req.body.c3c, req.body.c4c))
+  res.send headerStr + gpaFormString + '<p>Your GPA is: ' + makeGPA(arrayizer(req.body.c1g, req.body.c2g, req.body.c3g, req.body.c4g), arrayizer(req.body.c1c, req.body.c2c, req.body.c3c, req.body.c4c)) + '</p>' + footerStr
 
 module.exports.arrayizer = arrayizer;
 module.exports.makeGPA = makeGPA;
