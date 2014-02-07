@@ -1,3 +1,5 @@
+#Brian Mitchell and Henry Fellows
+
 gpaFormString = '<form method="post" action="/gpa">\n
     <label>Class 1:</label>\n
     <select id="c1g" name="c1g">\n
@@ -95,6 +97,7 @@ gpaFormString = '<form method="post" action="/gpa">\n
 </form>\n'
 
 headerStr = '<!DOCTYPE html>\n
+<!-- Brian Mitchell and Henry Fellows-->\n
 <html>\n
 <head>\n
     <title>Calculate Your GPA</title>\n
@@ -105,6 +108,12 @@ footerStr = '</body>\n</html>'
 
 arrayizer = (inputs...) ->
   inputs
+
+parseIntArray = (arr) ->
+  parsed = arr.map((x) ->
+    parseInt x, 10
+  )
+  parsed
 
 makeGPA = (grades, credits) ->
   gradePoint = 0
@@ -119,9 +128,8 @@ exports.gpaFormResponse = (req, res) ->
   res.render 'gpa'
 
 exports.gpaPostResponse = (req, res) ->
-  console.log(arrayizer(req.body.c1g, req.body.c2g, req.body.c3g, req.body.c4g))
-  console.log(arrayizer(req.body.c1c, req.body.c2c, req.body.c3c, req.body.c4c))
-  res.send headerStr + gpaFormString + '<p>Your GPA is: ' + makeGPA(arrayizer(req.body.c1g, req.body.c2g, req.body.c3g, req.body.c4g), arrayizer(req.body.c1c, req.body.c2c, req.body.c3c, req.body.c4c)) + '</p>' + footerStr
+  res.send headerStr + gpaFormString + '<p>Your GPA is: ' + makeGPA(parseIntArray(arrayizer(req.body.c1g, req.body.c2g, req.body.c3g, req.body.c4g)), parseIntArray(arrayizer(req.body.c1c, req.body.c2c, req.body.c3c, req.body.c4c))) + '</p>' + footerStr
 
 module.exports.arrayizer = arrayizer;
+module.exports.parseIntArray = parseIntArray;
 module.exports.makeGPA = makeGPA;

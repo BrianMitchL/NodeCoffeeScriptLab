@@ -1,10 +1,17 @@
+#Brian Mitchell and Henry Fellows
+
 assert = require 'assert'
 arrayizer = require('./routes/gpa').arrayizer
 makeGPA = require('./routes/gpa').makeGPA
+parseIntArray = require('./routes/gpa').parseIntArray
 
 describe "testing arrayizer", ->
   it "should return [4, 4, 2, 5]", ->
     assert.deepEqual(arrayizer(4, 4, 2, 5), [4, 4, 2, 5])
+
+describe "testing parseIntArray", ->
+  it "should return [4, 4, 2, 5]", ->
+    assert.deepEqual(parseIntArray(arrayizer("4", "4", "2", "5")), [4, 4, 2, 5])
 
 describe "testing gpa calculator", ->
   it "should return 3.327", ->
